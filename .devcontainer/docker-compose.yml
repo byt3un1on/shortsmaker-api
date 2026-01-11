@@ -6,6 +6,8 @@ services:
     volumes:
       - ../..:/workspaces/shortsmaker:cached
       - ${HOME}/.ssh:/home/vscode/.ssh:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
     command: sleep infinity
     environment:
       - LOG_LEVEL=DEBUG
