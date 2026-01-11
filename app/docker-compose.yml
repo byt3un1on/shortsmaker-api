@@ -1,0 +1,22 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shortsmaker-api-prod
+    ports:
+      - "58000:8000"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=shortsmaker
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      # Adicione outras variáveis de ambiente necessárias aqui
+    networks:
+      - app_shortsmaker-network
+    restart: always
+
+networks:
+  app_shortsmaker-network:
+    external: true

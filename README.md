@@ -22,6 +22,15 @@ Para iniciar o desenvolvimento, abra este projeto no **VS Code DevContainer**.
 - `make lint`: Executa a análise estática de código.
 - `make format`: Formata o código conforme as regras do projeto.
 
+### Docker
+
+- `make docker-build`: Constrói a imagem do container.
+- `make up`: Sobe o container da API em modo daemon.
+- `make down`: Para e remove o container.
+- `make ps`: Lista o status dos containers.
+- `make migrate`: Executa as migrações do banco de dados dentro do container.
+- `make logs`: Visualiza os logs do container em tempo real.
+
 ## Referência
 
 Este projeto foi baseado no padrão do repositório `canal-de-cortes/agent-operator`.
