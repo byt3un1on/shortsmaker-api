@@ -1,4 +1,4 @@
-.PHONY: install build test test-verbose test-coverage format lint validate clean help docker-build up down logs
+.PHONY: install build test test-verbose test-coverage format lint validate clean help docker-build up down logs ps
 
 IMAGE_NAME=shortsmaker-api
 CONTAINER_NAME=shortsmaker-api-service
@@ -48,8 +48,14 @@ up:
 down:
 	docker compose down
 
+migrate:
+	docker exec shortsmaker-api-prod alembic upgrade head
+
 logs:
 	docker compose logs -f
+
+ps:
+	docker compose ps
 
 clean:
 	rm -rf .venv

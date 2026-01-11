@@ -13,7 +13,6 @@ router = APIRouter(tags=["Tickets"])
 async def create_ticket(
     theme: str,
     description: str,
-    use_case: CreateTicketUseCase = Depends(
-        Provide[Container.create_ticket_use_case]),
+    use_case: CreateTicketUseCase = Depends(Provide[Container.create_ticket_use_case]),
 ):
     return await use_case.execute(theme=theme, description=description)

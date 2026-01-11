@@ -6,6 +6,13 @@
 	"service": "devcontainer",
 	"workspaceFolder": "/workspaces/shortsmaker/shortsmaker-api",
 	"postStartCommand": "bash .devcontainer/onstart.sh",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "false"
+		}
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
