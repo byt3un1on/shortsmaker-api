@@ -1,10 +1,13 @@
-.PHONY: install build test test-verbose test-coverage format lint validate clean help docker-build up down logs ps
+.PHONY: venv install build test test-verbose test-coverage format lint validate makevalidate clean help docker-build up down logs ps
 
 IMAGE_NAME=shortsmaker-api
 CONTAINER_NAME=shortsmaker-api-service
 
-install:
+venv:
 	python3 -m venv .venv
+	. .venv/bin/activate
+
+install: venv
 	. .venv/bin/activate && pip install -r requirements.txt
 
 build:
@@ -35,6 +38,8 @@ lint:
 
 validate: build format lint test-coverage
 	@echo "✅ Full validation complete"
+
+makevalidate: install validate
 
 run:
 	. .venv/bin/activate && export PYTHONPATH=$PYTHONPATH:. && python api.py
