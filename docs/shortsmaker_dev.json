@@ -1,0 +1,11 @@
+{
+	"id": "shortsmaker-env-dev",
+	"name": "Shortsmaker API - Dev",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8001",
+			"enabled": true
+		}
+	]
+}

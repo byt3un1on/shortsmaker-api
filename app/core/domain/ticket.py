@@ -14,7 +14,10 @@ class Ticket(SQLModel, table=True):
     updated_at: datetime = Field(default_factory=datetime.now)
     is_deleted: bool = False
 
-    attributes: List["TicketAttribute"] = Relationship(back_populates="ticket")
+    attributes: List["TicketAttribute"] = Relationship(
+        back_populates="ticket",
+        sa_relationship_kwargs={"cascade": "all, delete-orphan"},
+    )
 
 
 class TicketAttribute(SQLModel, table=True):
@@ -25,4 +28,6 @@ class TicketAttribute(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.now)
     is_deleted: bool = False
 
-    ticket: Optional[Ticket] = Relationship(back_populates="attributes")
+    ticket: Optional[Ticket] = Relationship(
+        back_populates="attributes", sa_relationship_kwargs={"cascade": "all"}
+    )

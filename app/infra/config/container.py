@@ -19,7 +19,8 @@ class Container(containers.DeclarativeContainer):
     settings = providers.Object(settings)
 
     # Database
-    engine = providers.Singleton(create_engine, url=settings.provided.database_url)
+    engine = providers.Singleton(
+        create_engine, url=settings.provided.database_url)
 
     db_session = providers.Callable(get_db_session, engine=engine)
 
@@ -27,7 +28,8 @@ class Container(containers.DeclarativeContainer):
     logger = providers.Singleton(Logger)
 
     # Repositories
-    ticket_repository = providers.Factory(TicketRepository, session=db_session)
+    ticket_repository = providers.Factory(
+        TicketRepository, session=db_session, logger=logger)
 
     # Use Cases
     create_ticket_use_case = providers.Factory(

@@ -22,7 +22,7 @@ def override_db(test_engine):
 def test_create_ticket():
     response = client.post(
         "/api/v1/tickets",
-        params={"theme": "Tecnologia", "description": "Vídeo sobre IA"},
+        json={"theme": "Tecnologia", "description": "Vídeo sobre IA"},
     )
     assert response.status_code == 200
     assert "id" in response.json()
