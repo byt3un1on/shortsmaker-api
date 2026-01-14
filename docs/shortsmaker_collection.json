@@ -73,9 +73,23 @@
                             "type": "noauth"
                         },
                         "method": "POST",
-                        "header": [],
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"theme\":\"Tecnologia\",\"description\":\"Vídeos sobre inovações tecnológicas\"}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
                         "url": {
-                            "raw": "{{baseUrl}}/api/v1/tickets?theme=Tecnologia&description=Vídeos%20sobre%20inovações%20tecnológicas",
+                            "raw": "{{baseUrl}}/api/v1/tickets",
                             "host": [
                                 "{{baseUrl}}"
                             ],
@@ -83,16 +97,6 @@
                                 "api",
                                 "v1",
                                 "tickets"
-                            ],
-                            "query": [
-                                {
-                                    "key": "theme",
-                                    "value": "Tecnologia"
-                                },
-                                {
-                                    "key": "description",
-                                    "value": "Vídeos sobre inovações tecnológicas"
-                                }
                             ]
                         }
                     },
