@@ -5,9 +5,13 @@ from sqlmodel import Session
 from adapter.controllers.ticket_controller import router as ticket_router
 from infra.config.container import Container
 from infra.config.context import db_session_context
+from infra.config.database import run_migrations
 
 
 def create_app() -> FastAPI:
+    # Run migrations on startup
+    run_migrations()
+
     container = Container()
 
     # Wire the container to the modules that use DI
